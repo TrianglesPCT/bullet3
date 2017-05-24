@@ -26,7 +26,7 @@ subject to the following restrictions:
 
 
 
-
+///only the 32bit versions for now
 extern char sBulletDNAstr[];
 extern int sBulletDNAlen;
 extern char sBulletDNAstr64[];
@@ -486,14 +486,8 @@ public:
 			int littleEndian= 1;
 			littleEndian= ((char*)&littleEndian)[0];
 
-			if (sizeof(void*)==8)
-			{
-				buffer[7] = '-';
-			} else
-			{
-				buffer[7] = '_';
-			}
-
+			buffer[7] = (sizeof(void*) == 8) ? '-' : '_';
+		
 			if (littleEndian)
 			{
 				buffer[8]='v';
@@ -505,7 +499,7 @@ public:
 
 			buffer[9] = '2';
 			buffer[10] = '8';
-			buffer[11] = '7';
+			buffer[11] = '6';
 
 		}
 
